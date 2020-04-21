@@ -47,31 +47,6 @@ class App {
     }
 }
 
-class HttpRequestGet implements HttpRequestInterface {
-    public function is_get() {
-        return true;
-    }
-
-    public function is_post() {
-        return false;
-    }
-
-    public function has($key) {
-        return array_key_exists($key, $_GET);
-    }
-
-    public function get($key) {
-        return array_key_exists($key, $_GET) ? $_GET[$key] : null;
-    }
-}
-
-interface HttpRequestInterface {
-    public function is_get();
-    public function is_post();
-    public function has($key);
-    public function get($key);
-}
-
 class HttpRequest {
     public static function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -80,9 +55,9 @@ class HttpRequest {
             return new HttpRequestPost();
         } else {
             // TODO: return a HTTPReqeuestInvalid
-        }   
-
+        }
     }
+
     public function is_request($key) {
         return array_key_exists($key, $_REQUEST);
     }
@@ -98,11 +73,30 @@ class HttpRequest {
     public function get_method() {
         return $_SERVER['REQUEST_METHOD'];
     }
+}
 
-    public function get_get() {
+interface HttpRequestInterface {
+    public function is_get();
+    public function is_post();
+    public function has($key);
+    public function get($key);
+}
+
+class HttpRequestGet implements HttpRequestInterface {
+    public function is_get() {
+        return true;
     }
 
-    public function get_post() {
+    public function is_post() {
+        return false;
+    }
+
+    public function has($key) {
+        return array_key_exists($key, $_GET);
+    }
+
+    public function get($key) {
+        return array_key_exists($key, $_GET) ? $_GET[$key] : null;
     }
 }
 
