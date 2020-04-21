@@ -1,0 +1,27 @@
+{
+    "name": "aoloe/tiny-rest",
+    "type": "library",
+    "description": "Set of three tiny classes for creating a tiny rest app",
+    "keywords": [
+        "php",
+        "rest"
+    ],
+    "homepage": "https://github.com/aoloe/php-tiny-rest",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ale Rimoldi",
+            "email": "ale@ideale.ch",
+            "homepage": "http://ideale.ch",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aoloe\\TinyRest": "src"
+        }
+    }
+}
