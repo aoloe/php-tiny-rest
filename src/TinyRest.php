@@ -33,7 +33,7 @@ class App {
         }
 
         if (is_null($actions)) {
-            $this->error_message = 'invalid method '.$request->get_method();
+            $this->error_message = 'invalid method '.HttpRequest::get_method();
             return false;
         }
 
@@ -41,7 +41,7 @@ class App {
             $actions[$action]();
             return true;
         } else {
-            $this->error_message = 'invalid '.$return->get_method().' action '.$action;
+            $this->error_message = 'invalid '.HttpRequest::get_method().' action '.$action;
             return false;
         }
     }
@@ -58,19 +58,19 @@ class HttpRequest {
         }
     }
 
-    public function is_request($key) {
+    public static function is_request($key) {
         return array_key_exists($key, $_REQUEST);
     }
 
-    public function is_method_get() {
+    public static function is_method_get() {
         return $_SERVER['REQUEST_METHOD'] === 'GET';
     }
 
-    public function is_method_post() {
+    public static function is_method_post() {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 
-    public function get_method() {
+    public static function get_method() {
         return $_SERVER['REQUEST_METHOD'];
     }
 }
