@@ -1,6 +1,6 @@
 # Tiny Rest
 
-One small single file with Router, Request and Response classes for tiny rest Apps
+One small single file with Router, Request and Response classes for tiny rest Apps.
 
 TinyRest provides:
 
@@ -26,20 +26,14 @@ You can get the repository from Github: <https://github.com/aoloe/php-tiny-rest>
 ... and then link it in your projects `composer.json`by the path on your computer:
 
 ```json
-{
-	...
-
-    "repositories": [
-        {
-            "type": "path",
-            "url": "/your/path/to/php-tiny-rest"
-        }
-    ],
-    "require": {
-        "aoloe/tiny-rest": "@dev"
+"repositories": [
+    {
+        "type": "path",
+        "url": "/your/path/to/php-tiny-rest"
     }
-
-	...
+],
+"require": {
+    "aoloe/tiny-rest": "@dev"
 }
 ```
 
@@ -50,18 +44,14 @@ See the test script below for a basic usage (and TinyRest cannot do much more th
 You can also tell Composer to get the TinyRest from Github:
 
 ```json
-{
-	...
-
-    "repositories": [
-		{
-			"type": "vcs",
-			"url":  "git@github.com:aoloe/php-tiny-rest.git"
-		},
-	],
-    "require": {
-        "aoloe/tiny-rest": "dev-master"
-    }
+"repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@github.com:aoloe/php-tiny-rest.git"
+    },
+],
+"require": {
+    "aoloe/tiny-rest": "dev-master"
 }
 ```
 
