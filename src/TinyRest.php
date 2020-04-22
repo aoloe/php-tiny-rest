@@ -75,32 +75,28 @@ class HttpRequest {
     }
 }
 
-interface HttpRequestInterface {
-    public function is_get();
-    public function is_post();
-    public function has($key);
-    public function get($key);
+abstract class HttpRequestAbstract {
+    protected $data = [];
+    public function is_get() {return false;}
+    public function is_post() {return false;}
+    public function has($key) {
+        return array_key_exists($key, $this->data);
+    }
+    public function get($key) {
+        return array_key_exists($key, $this->data) ? $this->data[$key] : null;
+    }
 }
 
-class HttpRequestGet implements HttpRequestInterface {
+class HttpRequestGet extends HttpRequestAbstract {
+    public function __construct() {
+        $this->data = $_GET;
+    }
     public function is_get() {
         return true;
     }
-
-    public function is_post() {
-        return false;
-    }
-
-    public function has($key) {
-        return array_key_exists($key, $_GET);
-    }
-
-    public function get($key) {
-        return array_key_exists($key, $_GET) ? $_GET[$key] : null;
-    }
 }
 
-class HttpRequestPost implements HttpRequestInterface {
+class HttpRequestPost extends HttpRequestAbstract {
     public function __construct() {
         // post variables sent by axios are json in the body
         if (empty($_POST)) {
@@ -109,24 +105,16 @@ class HttpRequestPost implements HttpRequestInterface {
             if (!empty($body)) {
                 $data = json_decode($body, true);
                 if (!json_last_error()) {
-                    $_POST = $data;
+                    $this->data = $data;
                 }
             }
+        } else {
+            $this->data = $_POST;
         }
-    }
-
-    public function is_get() {
-        return false;
     }
 
     public function is_post() {
         return true;
-    }
-    public function has($key) {
-        return array_key_exists($key, $_POST);
-    }
-    public function get($key) {
-        return array_key_exists($key, $_POST) ? $_POST[$key] : null;
     }
 }
 
