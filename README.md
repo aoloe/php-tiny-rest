@@ -1,14 +1,13 @@
 # Tiny Rest
 
-Set of three tiny classes for creating a tiny rest App.
+One small single file with Router, Request and Response classes for tiny rest Apps
 
-Provides: 
+TinyRest provides:
 
-- An App that let you register Post and Get routes.
+- Registration of Post and Get routes.
 - A mandatory `action` argument (no rewrite needed or supported).
 - An Http Request class that queries `$_POST` and `$_GET` (with support for Json over Post).
 - An Http Response class that returns Json encoded replies.
-
 
 ## Usage
 
